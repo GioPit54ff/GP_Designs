@@ -3,135 +3,115 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>GP Designs</title>
+    <title>GP Digitals</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
     <link rel="icon" href="Logo.svg" type="image/svg+xml" />
-     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-
 <header>
-
-  
     <div class="logo-branding">
-        
-            <img src="Logo.svg" alt="Logo" class="logo"/>
-        
+        <img src="Logo.svg" alt="Logo" class="logo"/>
         <div class="branding">
             <h1>GP Digitals</h1>
-            <p class="tagline">Branding, Web & Motion</p>
-             
-              
-           
-              
-        
+            <p class="tagline">Graphics, Web & Motion</p>
         </div>
-        
     </div>
-
 </header> 
 
 <section class="banner-slider">
 
+    <div class="slide">
+        <img src="GraphicDesign.png" alt="Murals Project">
+        <div class="caption">Graphic Design</div>
+    </div>
 
+    <div class="slide">
+        <img src="Scene33.png" alt="Graphic Identity">
+        <div class="caption">Web / App Design</div>
+    </div>
 
-  <div class="slide">
-   
-  <img src="GP - Φωτογραφία2.jpg" alt="Murals Project">
-
-    <div class="caption">Graphic Design</div>
-  </div>
-
-  
-   <div class="slide">
     
-  <img src="Scene18.png" alt="Graphic Identityt">
+    <div class="slide">
+        <video id="videoSlide" src="motion2.mp4"></video>
+        <div class="caption">Motion Graphics</div>
+    </div>
 
-    <div class="caption">Web / App Design</div>
-  </div>
+    <div class="slide">
+        <img src="Molos3-Picsart-AiImageEnhancer.jpg" alt="Graphic Identity">
+        <div class="caption">Photography & Video</div>
+    </div>
 
-  <div class="slide">
-
-  <img src="Marcel Caram - Φωτογραφία55.png" alt="Graphic Identityt">
-
-    <div class="caption">3D Modeling & Animation</div>
-  </div>
-
-
- 
-
-  
     
 
+     
 
+    
   
 
    
+
 </section>
 
+<script>
+    let currentIndex = 0;
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
 
- <script>
-  let currentIndex = 0;
-  const slides = document.querySelectorAll('.slide');
-  const totalSlides = slides.length;
+    // Διάρκεια για τα κανονικά slides σε ms
+    const slideDurations = [4000, 4000, 0, 4000]; // Το 0 για το video slide
 
-  function showSlide(index) {
-    slides.forEach((slide, i) => {
-      slide.classList.remove('active');
-    });
-    slides[index].classList.add('active');
-  }
+    function showSlide(index) {
+        slides.forEach(slide => slide.classList.remove('active'));
+        slides[index].classList.add('active');
 
-  function nextSlide() {
-    currentIndex = (currentIndex + 1) % totalSlides;
+        if(index === 2) { // Video slide
+            const video = document.getElementById('videoSlide');
+            video.currentTime = 0; // Ξεκινά από την αρχή
+            video.play();
+            // Όταν τελειώσει το βίντεο, πάει στο επόμενο slide
+            video.onended = () => nextSlide();
+        } else {
+            // Κανονικά slides
+            setTimeout(nextSlide, slideDurations[index]);
+        }
+    }
+
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % totalSlides;
+        showSlide(currentIndex);
+    }
+
+    // Ξεκινάμε τον slider
     showSlide(currentIndex);
-  }
-
-  showSlide(currentIndex);
-  
-  setInterval(nextSlide, 4000); // αλλαγή κάθε 4 δευτερόλεπτα
-
-  
 </script>
-
-
-
-
-
-
-
 
 <footer>
     <div class="footer-links">
         <div class="about-section">
             <h2>About</h2>
-            <p>GP Designs is a multimedia and graphic design studio based in Limassol, combining creativity with problem-solving to craft clear, engaging digital visuals. Whether you need branding, multimedia content, or digital storytelling, our focus is on clarity, creativity, and results.</p>
-        </div>
+           <p>
+  GP Digitals is a multimedia and graphic design studio based in Limassol, dedicated to crafting impactful digital experiences. 
+  Our services span 
+  <span style="font-weight:550;">Graphic Design, Web & App Design, Motion Graphics, Photography & Video</span> — combining creativity with problem-solving to deliver clear, engaging, and results-driven visuals.
+</p>  </div>
 
         <div class="brandingf">
-            <h1>GP Designs</h1>
+            <h1>GP Digitals</h1>
         </div>
 
         <div class="bottom-section">
             <div class="contact-links">
                 <a href="mailto:giopit54ff@gmail.com" class="gmail-link">giopit54ff@gmail.com</a>
                 <a href="tel:+35797655441" class="phone-link">+357 97655441</a>
-                <a href="https://www.instagram.com/gp_designs33/" class="phone-link">Instagram</a>
+                <a href="https://www.instagram.com/gp.digitals33/" class="phone-link">Instagram</a>
             </div>
-            <p class="fCopy">&copy; 2025 George Pitsillis. All rights reserved.</p>
+            <p class="fCopy">&copy; 2025 GP Digitals. All rights reserved.</p>
         </div>
     </div>
 </footer>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
